@@ -1,16 +1,13 @@
-# flutter_stuff
+# 方舟
 
-A new Flutter project.
+学习flutter中，仿写一个社交类的app
 
-## Getting Started
+完成部分
 
-This project is a starting point for a Flutter application.
+![image](https://user-images.githubusercontent.com/9364684/225298574-5c6d8c89-b37f-43cd-8422-32db9f3d176d.png)
+![image](https://user-images.githubusercontent.com/9364684/225298651-ab302453-0028-4b60-b399-16a25b2dfdc5.png)
+![image](https://user-images.githubusercontent.com/9364684/225298718-9afef78a-09ad-4036-a4a9-79455d8cd704.png)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[设计资源](https://mastergo.com/community/resource/8111?from=card)
