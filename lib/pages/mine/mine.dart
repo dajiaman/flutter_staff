@@ -7,8 +7,11 @@ import 'package:flutter_stuff/common/widgets/click_item.dart';
 import 'package:flutter_stuff/pages/setting/setting.dart';
 import 'package:flutter_swipe/flutter_swipe.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:waterfall_flow/waterfall_flow.dart';
 
 import '../../common/widgets/load_image.dart';
+import '../../entity/feed_item.dart';
+import '../community/widgets/water_feed_item.dart';
 
 class MinePage extends StatefulWidget {
   const MinePage({super.key});
@@ -28,6 +31,54 @@ class _MinePageState extends State<MinePage>
 
   ScrollController _scrollController = ScrollController();
 
+  List<FeedItemModel> _list = [];
+
+  List<Map<String, dynamic>> _jsonData = [
+    {
+      "id": 1,
+      "title": "本科研究生如何通过规划时间斩获大厂Offer",
+      "author": "王若瑄Jimmy",
+      "likes": 1444,
+      "cover": "cover",
+      "avatar": "",
+    },
+    {
+      "id": 2,
+      "title": "谈薪水时不要怂，3个谈判技巧轻松让你拿高薪",
+      "author": "黄先生",
+      "likes": 44,
+      "cover": "cover2",
+    },
+    {
+      "id": 3,
+      "title": "很多人说年纪超过30岁的设计师找不到工作，很多公司都不会要，真的是这样吗",
+      "author": "校园大使mary",
+      "likes": 775,
+      "cover": "cover3",
+    },
+    {
+      "id": 4,
+      "title": "面试时到底什么不能说？百场面试经验分享给你",
+      "author": "张三😀了一下",
+      "likes": 6786756765,
+      "cover": "cover",
+    },
+    {
+      "id": 5,
+      "title": "本科研究生如何通过规划时间斩获大厂Offer",
+      "author": "王若瑄Jimmy",
+      "likes": 32423,
+      "cover": "cover2",
+    },
+    {
+      "id": 6,
+      "title": "本科研究生如何通过规划时间斩获大厂Offer",
+      "author": "王若瑄Jimmy",
+      "likes": 566,
+      "cover": "cover3",
+    }
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +86,10 @@ class _MinePageState extends State<MinePage>
     setState(() {
       _nums[0] = 111;
     });
+    for (var _json in _jsonData) {
+      FeedItemModel model = FeedItemModel.fromJson(_json);
+      _list.add(model);
+    }
 
     _tabController = TabController(
       initialIndex: 1,
@@ -77,6 +132,7 @@ class _MinePageState extends State<MinePage>
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
         child: Container(
+          height: 200,
           padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -214,28 +270,46 @@ class _MinePageState extends State<MinePage>
     );
   }
 
+  Widget _buildWaterFallWrapper() {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.only(left: 16, bottom: 0),
+        color: Colors.white,
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            _buildWaterFall(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWaterFall() {
+    return SliverWaterfallFlow.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: 5.0,
+      mainAxisSpacing: 15.0,
+      children: [for (var item in _list) WaterFeedItemWidget(item)],
+    );
+  }
+
   Widget _buildBody() {
     return Column(
       children: [
         _buildProfileBoxView(),
         _buildProfileData(),
         _buildTabView(),
-        Gaps.vGap16,
-        Gaps.vGap50,
-        Gaps.vGap50,
-        Gaps.vGap50,
+        _buildWaterFallWrapper(),
       ],
     );
   }
 
   Widget _buildMainView() {
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: [
-        SliverToBoxAdapter(
-          child: _buildBody(),
-        ),
-      ],
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: _buildBody(),
     );
   }
 

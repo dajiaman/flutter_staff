@@ -143,10 +143,7 @@ class _RecommendPageState extends State<RecommendPage>
         height: 120,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            return new Image.network(
-              "http://via.placeholder.com/343x120",
-              fit: BoxFit.fill,
-            );
+            return LoadAssetImage('home/banner');
           },
           itemCount: 10,
           containerHeight: 100,

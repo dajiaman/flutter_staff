@@ -38,7 +38,7 @@ class _WaterFeedItemWidgetState extends State<WaterFeedItemWidget> {
               children: [
                 LoadAssetImage(
                   'home/${_feedItem!.cover}',
-                ),
+                ).cornerRadius(10),
                 Positioned(
                   right: 10,
                   bottom: 10,

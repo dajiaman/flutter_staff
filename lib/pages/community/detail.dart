@@ -100,6 +100,7 @@ class _CommunityDetailPageState extends State<CommunityDetailPage>
     super.dispose();
   }
 
+  // build tabbar ui
   _buildTabBar() {
     return PreferredSize(
       preferredSize: Size(0, 0),
